@@ -9,7 +9,7 @@ part of 'person.dart';
 Person _$PersonFromJson(Map<String, dynamic> json) => Person(
       id: json['id'] as int,
       name: json['name'] as String,
-      profilePath: json['profile_path'] as String,
+      profilePath: json['profile_path'] as String?,
       knownAs: (json['also_known_as'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),

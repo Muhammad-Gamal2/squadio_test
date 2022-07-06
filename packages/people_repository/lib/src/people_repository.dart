@@ -12,10 +12,11 @@ class PeopleRepository {
   /// [language] parameter is the user language.
   /// [page] parameter is the page number.
   /// [apiKey] parameter is api key.
-  Future<PeoplePage> getPopularPeople(
-      {String? language = "en-US",
-      required String apiKey,
-      required int page}) async {
+  Future<PeoplePage> getPopularPeople({
+    required String apiKey,
+    required int page,
+    required String language,
+  }) async {
     const popularPeopleRequest = '/person/popular';
 
     final response =

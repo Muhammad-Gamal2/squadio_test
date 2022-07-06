@@ -1,0 +1,1 @@
+export 'people_card.dart';

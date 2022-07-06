@@ -21,7 +21,7 @@ class Person extends Equatable {
   final int id;
   final String name;
   @JsonKey(name: 'profile_path')
-  final String profilePath;
+  final String? profilePath;
   final String? biography;
   final String? birthday;
   @JsonKey(name: 'also_known_as')

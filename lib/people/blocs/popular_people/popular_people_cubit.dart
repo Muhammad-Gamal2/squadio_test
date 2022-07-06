@@ -17,7 +17,7 @@ class PopularPeopleCubit extends Cubit<PopularPeopleState> {
   Future<void> loadPopularPeople({
     required String apiKey,
     required int page,
-    String? language,
+    String language = "en-US",
   }) async {
     if (page == 1) {
       emit(PopularPeopleInitial());
