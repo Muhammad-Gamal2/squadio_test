@@ -1,8 +1,8 @@
 import 'package:network_service/network_service.dart';
 import 'package:people_repository/people_repository.dart';
 
-class BuyRepository {
-  BuyRepository({NetworkService? networkService})
+class PeopleRepository {
+  PeopleRepository({NetworkService? networkService})
       : _networkService = networkService ?? NetworkService();
 
   final NetworkService _networkService;
@@ -13,7 +13,7 @@ class BuyRepository {
   /// [page] parameter is the page number.
   /// [apiKey] parameter is api key.
   Future<PeoplePage> getPopularPeople(
-      {String language = "en-US",
+      {String? language = "en-US",
       required String apiKey,
       required int page}) async {
     const popularPeopleRequest = '/person/popular';
@@ -33,7 +33,7 @@ class BuyRepository {
   /// [apiKey] parameter is api key.
   /// [personId] parameter is person id.
   Future<Person> getPersonDetails({
-    String language = "en-US",
+    String? language = "en-US",
     required int personId,
     required String apiKey,
   }) async {

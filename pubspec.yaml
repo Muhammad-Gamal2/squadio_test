@@ -29,6 +29,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bloc: ^8.0.3
+  flutter_bloc: ^8.0.1
+  equatable: 2.0.3
+  infinite_scroll_pagination: ^3.2.0
+  easy_localization: ^3.0.1
+  network_service:
+    path: packages/network_service
+  people_repository:
+    path: packages/people_repository
+
 
 
   # The following adds the Cupertino Icons font to your application.
