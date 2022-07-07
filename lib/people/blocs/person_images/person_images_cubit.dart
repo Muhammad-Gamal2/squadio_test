@@ -13,11 +13,11 @@ class PersonImagesCubit extends Cubit<PersonImagesState> {
 
   final PeopleRepository _peopleRepository;
 
-  Future<void> loadPersonDetails({
+  Future<void> loadPersonImages({
     required String apiKey,
-    String? language,
     required int personId,
   }) async {
+    emit(PersonImagesLoading());
     try {
       final images = await _peopleRepository.getPersonImages(
         apiKey: apiKey,

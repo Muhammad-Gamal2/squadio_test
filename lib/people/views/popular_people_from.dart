@@ -24,7 +24,7 @@ class _PopularPeopleFromState extends State<PopularPeopleFrom> {
       (int pageKey) {
         context
             .read<PopularPeopleCubit>()
-            .loadPopularPeople(page: pageKey, apiKey: apikey);
+            .loadPopularPeople(page: pageKey, apiKey: apiKey);
       },
     );
     super.initState();

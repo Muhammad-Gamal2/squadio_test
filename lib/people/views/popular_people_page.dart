@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:people_repository/people_repository.dart';
-import 'package:squadio_test/people/blocs/popular_people/popular_people_cubit.dart';
 
+import '../people.dart';
 import 'popular_people_from.dart';
 
 class PopularPeoplePage extends StatelessWidget {

@@ -60,8 +60,8 @@ class PeopleRepository {
 
     final response = await _networkService.get(imagesRequest, queryParameters: {
       "api_key": apiKey,
-      "person_id": personId,
     });
-    return response.data["profiles"].map((e) => e["file_path"]).toList();
+    return List<String>.from((response.data['profiles'] as List<dynamic>)
+        .map((image) => image['file_path']));
   }
 }

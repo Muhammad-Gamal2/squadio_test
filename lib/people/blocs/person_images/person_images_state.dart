@@ -9,6 +9,11 @@ class PersonImagesInitial extends PersonImagesState {
   List<Object> get props => [];
 }
 
+class PersonImagesLoading extends PersonImagesState {
+  @override
+  List<Object> get props => [];
+}
+
 class PersonImagesLoadSuccess extends PersonImagesState {
   const PersonImagesLoadSuccess({
     required this.images,
