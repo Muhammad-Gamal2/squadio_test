@@ -1,15 +1,16 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'person.g.dart';
 
+@HiveType(typeId: 0)
 @JsonSerializable()
 class Person extends Equatable {
   const Person({
     required this.id,
     required this.name,
     required this.profilePath,
-    this.knownAs,
     this.biography,
     this.birthday,
   });
@@ -18,18 +19,21 @@ class Person extends Equatable {
 
   Map<String, dynamic> toJson() => _$PersonToJson(this);
 
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String name;
+  @HiveField(2)
   @JsonKey(name: 'profile_path')
   final String? profilePath;
+  @HiveField(3)
   final String? biography;
+  @HiveField(4)
   final String? birthday;
-  @JsonKey(name: 'also_known_as')
-  final List<String>? knownAs;
 
   @override
   List<Object?> get props =>
-      [id, name, profilePath, biography, birthday, knownAs];
+      [id, name, profilePath, biography, birthday];
 
   static const Person empty = Person(id: 0, name: '', profilePath: '');
 
@@ -46,7 +50,6 @@ class Person extends Equatable {
       profilePath: profilePath ?? this.profilePath,
       biography: biography ?? this.biography,
       birthday: birthday ?? this.birthday,
-      knownAs: knownAs ?? this.knownAs,
     );
   }
 }

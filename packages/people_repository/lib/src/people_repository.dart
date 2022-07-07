@@ -1,3 +1,4 @@
+import 'package:hive/hive.dart';
 import 'package:network_service/network_service.dart';
 import 'package:people_repository/people_repository.dart';
 
@@ -63,5 +64,17 @@ class PeopleRepository {
     });
     return List<String>.from((response.data['profiles'] as List<dynamic>)
         .map((image) => image['file_path']));
+  }
+
+  /// Fetch popular people from cache.
+  PeoplePage getPopularPeopleCache() {
+    final box = Hive.box('zidoBox');
+    return box.get("popularPeople", defaultValue: PeoplePage.empty);
+  }
+
+  /// save popular people to the cache.
+  Future<void> putProductTypeCache(PeoplePage peoplePage) async {
+    final box = Hive.box('zidoBox');
+    await box.put("popularPeople", peoplePage);
   }
 }

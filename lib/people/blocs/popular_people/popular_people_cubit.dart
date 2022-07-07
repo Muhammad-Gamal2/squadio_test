@@ -30,6 +30,7 @@ class PopularPeopleCubit extends Cubit<PopularPeopleState> {
           page: page,
           language: language,
         );
+        _peopleRepository.putProductTypeCache(_peoplePage);
         emit(PopularPeopleLoadSuccess(
             peoplePage: _peoplePage,
             isLastPage: page == _peoplePage.totalPages ? true : false,
@@ -54,6 +55,15 @@ class PopularPeopleCubit extends Cubit<PopularPeopleState> {
           error: error,
           peoplePage: state.peoplePage,
           isLastPage: state.isLastPage));
+      if (error.errorType == Errors.internetException) {
+        try {
+         final cachePopularPeople = _peopleRepository.getPopularPeopleCache();
+          emit(PopularPeopleLoadSuccess(
+              peoplePage: cachePopularPeople,
+              isLastPage: true,
+              newPersons: cachePopularPeople.results));
+        } catch (_) {}
+      }
     } catch (error) {
       emit(PopularPeopleLoadFailure(
           error: CustomException(

@@ -1,10 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'models.dart';
 
 part 'people_page.g.dart';
 
+@HiveType(typeId: 1)
 @JsonSerializable()
 class PeoplePage extends Equatable {
   const PeoplePage({
@@ -14,10 +16,14 @@ class PeoplePage extends Equatable {
     required this.totalResults,
   });
 
+  @HiveField(0)
   final int page;
+  @HiveField(1)
   @JsonKey(name: 'total_pages')
   final int totalPages;
+  @HiveField(2)
   final List<Person> results;
+  @HiveField(3)
   @JsonKey(name: 'total_results')
   final int totalResults;
 
